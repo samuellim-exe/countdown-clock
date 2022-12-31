@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-C8MF2BM1H7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-C8MF2BM1H7");
+    </script>
     <title>Countdown to 2023!!!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
@@ -38,10 +52,10 @@
         animation: gradient 1s forwards;
         /* margin: 0; */
         height: 100vh;
-        overflow-y: hidden!important;
+        overflow-y: hidden !important;
       }
 
-      body{
+      body {
         -ms-overflow-style: none;
         scrollbar-width: none;
         overflow: hidden;
@@ -53,10 +67,10 @@
 
       @keyframes gradient {
         0% {
-            background: linear-gradient(#0000, #0000), #0000;
+          background: linear-gradient(#0000, #0000), #0000;
         }
         100% {
-            background: linear-gradient(#0007, #0000), #123;
+          background: linear-gradient(#0007, #0000), #123;
         }
       }
 
@@ -255,7 +269,7 @@
       var fireworkElement = document.getElementsByClassName("f");
       var backgroundElement = document.getElementById("bg");
       var countDownDate = new Date("Jan 1, 2023 00:00:00").getTime();
-    //   var countDownDate = new Date("Dec 31, 2022 22:23:30").getTime();
+      //   var countDownDate = new Date("Dec 31, 2022 22:23:30").getTime();
 
       // Update the count down every 1 second
       var x = setInterval(function () {
@@ -276,14 +290,12 @@
         let h = hours ? hours + "h " : "";
         let m = minutes ? minutes + "m " : "";
         let s = seconds ? seconds + "s " : "";
-        let final = h || m || s ? h+m+s : seconds
+        let final = h || m || s ? h + m + s : seconds;
         //Display the result in the element
-        if(hours == 0 && minutes == 0)
-        {
-            final = seconds;
+        if (hours == 0 && minutes == 0) {
+          final = seconds;
         }
-        countdownElement.innerHTML =
-          final;
+        countdownElement.innerHTML = final;
         // countdownElement.innerHTML = "Happy New Year!";
 
         // If the count down is finished, write some text
@@ -291,10 +303,10 @@
           clearInterval(x);
           countdownElement.innerHTML = "Happy New Year!";
           backgroundElement.classList.toggle("bg-grad");
-        //   fireworkElement.classList.toggle("firework");
-        for (var i = 0; i < fireworkElement.length; i++) {
+          //   fireworkElement.classList.toggle("firework");
+          for (var i = 0; i < fireworkElement.length; i++) {
             fireworkElement[i].classList.toggle("firework");
-        }
+          }
         }
       }, 1000);
     </script>
