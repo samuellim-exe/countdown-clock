@@ -40,6 +40,7 @@
       #countdown {
         font-size: 5rem;
         margin-top: 24.5rem;
+        margin-bottom: 10px;
       }
       @media screen and (max-width: 768px) {
         #countdown {
@@ -263,7 +264,7 @@
     <div class="f" id="firework"></div>
     <div class="f" id="firework"></div>
     <h1 id="countdown"></h1>
-    <p class="d">until the new year</p>
+    <p class="d"></p>
     <script>
       // Set the element ID that the timer will display to
       var countdownElement = document.getElementById("countdown");
@@ -272,41 +273,45 @@
       var backgroundElement = document.getElementById("bg");
       //Next countdown: Jan 1, 2024 00:00:00
       var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
-        // var countDownDate = new Date("Dec 31, 2023 19:54:40").getTime();
+      // var countDownDate = new Date("Dec 31, 2023 20:08:00").getTime();
 
-      var y = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
+      smalltext.innerText = "until 2024!";
+      var y = setInterval(function () {
+        let now = new Date().getTime();
+        this.distance = countDownDate - now;
         var hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          (this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
         );
         // console.log(hours)
         if (hours <= -12) {
-          window.location.href = '/bye'
+          window.location.href = "/bye";
         }
-      },1000)
+      }, 1000);
 
       // Update the count down every 1 second
       var x = setInterval(function () {
         // Get today's date and time
         var now = new Date().getTime();
 
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
+        // Find the this.distance between now and the count down date
+        this.distance = countDownDate - now;
 
         // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var days = Math.floor(this.distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          (this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
         );
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var minutes = Math.floor(
+          (this.distance % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        var seconds = Math.floor((this.distance % (1000 * 60)) / 1000);
 
         let d = days ? days + "d " : "";
         let h = hours ? hours + "h " : "";
         let m = minutes ? minutes + "m " : "";
         let s = seconds ? seconds + "s " : "";
         let final = d || h || m || s ? d + h + m + s : seconds;
+        now = new Date().getTime();
         //Display the result in the element
         if (days == 0 && hours == 0 && minutes == 0) {
           final = seconds;
@@ -316,7 +321,7 @@
         // countdownElement.innerHTML = "Happy New Year!";
 
         // If the count down is finished, write some text
-        if (distance < 0) {
+        if (this.distance < 1000) {
           clearInterval(x);
           countdownElement.innerHTML = "Happy New Year!";
           smalltext.innerText = "";
