@@ -267,11 +267,12 @@
     <script>
       // Set the element ID that the timer will display to
       var countdownElement = document.getElementById("countdown");
+      const smalltext = document.getElementsByClassName("d")[0];
       var fireworkElement = document.getElementsByClassName("f");
       var backgroundElement = document.getElementById("bg");
       //Next countdown: Jan 1, 2024 00:00:00
-      var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
-      //   var countDownDate = new Date("Dec 31, 2023 20:23:30").getTime();
+      // var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
+        var countDownDate = new Date("Dec 31, 2023 19:54:40").getTime();
 
       var y = setInterval(function() {
         var now = new Date().getTime();
@@ -309,6 +310,7 @@
         //Display the result in the element
         if (days == 0 && hours == 0 && minutes == 0) {
           final = seconds;
+          smalltext.innerText = "seconds left!";
         }
         countdownElement.innerHTML = final;
         // countdownElement.innerHTML = "Happy New Year!";
@@ -317,6 +319,7 @@
         if (distance < 0) {
           clearInterval(x);
           countdownElement.innerHTML = "Happy New Year!";
+          smalltext.innerText = "";
           backgroundElement.classList.toggle("bg-grad");
           //   fireworkElement.classList.toggle("firework");
           for (var i = 0; i < fireworkElement.length; i++) {
