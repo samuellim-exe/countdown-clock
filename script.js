@@ -53,9 +53,9 @@ setInterval(countdown, 1000);
 
 var y = setInterval(function () {
   let now = new Date().getTime();
-  this.distance = countDownDate - now;
+  distance = countdownDate - now;
   var hours = Math.floor(
-    (this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
   );
   // console.log(hours)
   if (hours <= -12) {
