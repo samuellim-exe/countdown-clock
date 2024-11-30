@@ -1,4 +1,4 @@
-const nextYear = Date.now().getFullYear() + 1;
+const nextYear = new Date.now().getFullYear() + 1;
 
 var countdownElem = document.getElementById("countdown");
 const smalltext = document.getElementsByClassName("d")[0];
