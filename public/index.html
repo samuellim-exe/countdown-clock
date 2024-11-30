@@ -1,305 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-<head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8MF2BM1H7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-    gtag("config", "G-C8MF2BM1H7");
-  </script>
-  <title>Countdown to 2024</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-  <meta name="description" content="A countdown timer for 2024!" />
-  <meta name="author" content="@samuellim-exe">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-    body {
-      background-color: #000000;
-      color: #ffffff;
-      font-family: "Inter", sans-serif;
-      text-align: center;
-    }
-
-    #countdown {
-      font-size: 5rem;
-      margin-top: 24.5rem;
-      margin-bottom: 10px;
-    }
-
-    @media screen and (max-width: 768px) {
-      #countdown {
-        font-size: 3rem;
-        margin-top: 12.5rem;
-      }
-    }
-
-    /* FIREWORK ANIMATIONS */
-    body.bg-grad {
-      animation: gradient 1s forwards;
-      /* margin: 0; */
-      height: 100vh;
-      overflow-y: hidden !important;
-    }
-
-    body {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      overflow: hidden;
-    }
-
-    body::-webkit-scrollbar {
-      display: none;
-    }
-
-    @keyframes gradient {
-      0% {
-        background: linear-gradient(#0000, #0000), #0000;
-      }
-
-      100% {
-        background: linear-gradient(#0007, #0000), #123;
-      }
-    }
-
-    @keyframes firework {
-      0% {
-        transform: translate(var(--x), var(--initialY));
-        width: var(--initialSize);
-        opacity: 1;
-      }
-
-      50% {
-        width: 0.5vmin;
-        opacity: 1;
-      }
-
-      100% {
-        width: var(--finalSize);
-        opacity: 0;
-      }
-    }
-
-    /* @keyframes fireworkPseudo {
-  0% { transform: translate(-50%, -50%); width: var(--initialSize); opacity: 1; }
-  50% { width: 0.5vmin; opacity: 1; }
-  100% { width: var(--finalSize); opacity: 0; }
-}
- */
-    .firework,
-    .firework::before,
-    .firework::after {
-      --initialSize: 0.5vmin;
-      --finalSize: 45vmin;
-      --particleSize: 0.2vmin;
-      --color1: yellow;
-      --color2: khaki;
-      --color3: white;
-      --color4: lime;
-      --color5: gold;
-      --color6: mediumseagreen;
-      --y: -30vmin;
-      --x: -50%;
-      --initialY: 60vmin;
-      content: "";
-      animation: firework 2s infinite;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, var(--y));
-      width: var(--initialSize);
-      aspect-ratio: 1;
-      background:
-        /*
-    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 0%,
-    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 0%,
-    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 100%,
-    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 100%,
-    */
-        radial-gradient(circle,
-          var(--color1) var(--particleSize),
-          #0000 0) 50% 0%,
-        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
-        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
-        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
-        /* bottom right */
-        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
-        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
-        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 60%,
-        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 55% 80%,
-        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 70% 77%,
-        /* bottom left */
-        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 22% 90%,
-        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 45% 90%,
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 70%,
-        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 10% 60%,
-        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 31% 80%,
-        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 28% 77%,
-        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 13% 72%,
-        /* top left */
-        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 80% 10%,
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 95% 14%,
-        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 90% 23%,
-        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 100% 43%,
-        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 85% 27%,
-        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 77% 37%,
-        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 60% 7%,
-        /* top right */
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 22% 14%,
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 45% 20%,
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 34%,
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 10% 29%,
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 31% 37%,
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 28% 7%,
-        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 13% 42%;
-      background-size: var(--initialSize) var(--initialSize);
-      background-repeat: no-repeat;
-    }
-
-    .firework::before {
-      --x: -50%;
-      --y: -50%;
-      --initialY: -50%;
-      /*   transform: translate(-20vmin, -2vmin) rotate(40deg) scale(1.3) rotateY(40deg); */
-      transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
-      /*   animation: fireworkPseudo 2s infinite; */
-    }
-
-    .firework::after {
-      --x: -50%;
-      --y: -50%;
-      --initialY: -50%;
-      /*   transform: translate(44vmin, -50%) rotate(170deg) scale(1.15) rotateY(-30deg); */
-      transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg);
-      /*   animation: fireworkPseudo 2s infinite; */
-    }
-
-    .firework:nth-child(2) {
-      --x: 30vmin;
-    }
-
-    .firework:nth-child(2),
-    .firework:nth-child(2)::before,
-    .firework:nth-child(2)::after {
-      --color1: pink;
-      --color2: violet;
-      --color3: fuchsia;
-      --color4: orchid;
-      --color5: plum;
-      --color6: lavender;
-      --finalSize: 40vmin;
-      left: 30%;
-      top: 60%;
-      animation-delay: -0.25s;
-    }
-
-    .firework:nth-child(3) {
-      --x: -30vmin;
-      --y: -50vmin;
-    }
-
-    .firework:nth-child(3),
-    .firework:nth-child(3)::before,
-    .firework:nth-child(3)::after {
-      --color1: cyan;
-      --color2: lightcyan;
-      --color3: lightblue;
-      --color4: PaleTurquoise;
-      --color5: SkyBlue;
-      --color6: lavender;
-      --finalSize: 35vmin;
-      left: 70%;
-      top: 60%;
-      animation-delay: -0.4s;
-    }
-  </style>
-</head>
-
-<body class="" id="bg">
-  <div class="f" id="firework"></div>
-  <div class="f" id="firework"></div>
-  <div class="f" id="firework"></div>
-  <h1 id="countdown"></h1>
-  <p class="d"></p>
-  <script>
-    // Set the element ID that the timer will display to
-    var countdownElement = document.getElementById("countdown");
-    const smalltext = document.getElementsByClassName("d")[0];
-    var fireworkElement = document.getElementsByClassName("f");
-    var backgroundElement = document.getElementById("bg");
-    //Next countdown: Jan 1, 2024 00:00:00
-    var countDownDate = new Date("Jan 1, 2025 00:00:00").getTime();
-    // var countDownDate = new Date("Dec 31, 2023 20:08:00").getTime();
-
-    smalltext.innerText = "until 2024!";
-    var y = setInterval(function () {
-      let now = new Date().getTime();
-      this.distance = countDownDate - now;
-      var hours = Math.floor(
-        (this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      // console.log(hours)
-      if (hours <= -12) {
-        window.location.href = "/bye";
-      }
-    }, 1000);
-
-    // Update the count down every 1 second
-    var x = setInterval(function () {
-      // Get today's date and time
-      var now = new Date().getTime();
-
-      // Find the this.distance between now and the count down date
-      this.distance = countDownDate - now;
-
-      // Time calculations for days, hours, minutes and seconds
-      var days = Math.floor(this.distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor(
-        (this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      var minutes = Math.floor(
-        (this.distance % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      var seconds = Math.floor((this.distance % (1000 * 60)) / 1000);
-
-      let d = days ? days + "d " : "";
-      let h = hours ? hours + "h " : "";
-      let m = minutes ? minutes + "m " : "";
-      let s = seconds ? seconds + "s " : "";
-      let final = d || h || m || s ? d + h + m + s : seconds;
-      now = new Date().getTime();
-      //Display the result in the element
-      if (days == 0 && hours == 0 && minutes == 0) {
-        final = seconds;
-        smalltext.innerText = "seconds left!";
-      }
-      countdownElement.innerHTML = final;
-      // countdownElement.innerHTML = "Happy New Year!";
-
-      // If the count down is finished, write some text
-      if (this.distance < 1000) {
-        clearInterval(x);
-        countdownElement.innerHTML = "Happy New Year!";
-        smalltext.innerText = "";
-        backgroundElement.classList.toggle("bg-grad");
-        //   fireworkElement.classList.toggle("firework");
-        for (var i = 0; i < fireworkElement.length; i++) {
-          fireworkElement[i].classList.toggle("firework");
-        }
-      }
-    }, 1000);
-  </script>
-</body>
-
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
