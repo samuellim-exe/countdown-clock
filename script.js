@@ -49,16 +49,12 @@ function countdown() {
   }
 }
 
-setInterval(countdown, 1000);
-
-var y = setInterval(function () {
-  let now = new Date().getTime();
+function redirectToBye() {
+  let now = timeNow();
   distance = countdownDate - now;
-  var hours = Math.floor(
-    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  // console.log(hours)
-  if (hours <= -12) {
-    window.location.href = "/bye";
-  }
-}, 1000);
+  let hours = floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  hours <= -12 && (window.location.href = "/bye");
+}
+
+setInterval(countdown, 1000);
+setInterval(redirectToBye, 1000);
