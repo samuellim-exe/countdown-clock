@@ -4,7 +4,7 @@ var countdownElem = document.getElementById("countdown");
 const smalltext = document.getElementsByClassName("d")[0];
 const fireworkElem = document.getElementsByClassName("f");
 const bgElem = document.getElementById("bg");
-//Next countddown: Jan 1, year 00:00:00
+//Next countddown: Jan 1, 2025 00:00:00
 var countdownDate = new Date(`Jan 1, ${nextYear} 00:00:00`).getTime();
 
 smalltext.innerText = `until ${nextYear}`;
@@ -35,7 +35,7 @@ function countdown() {
   now = timeNow();
   //Update countdown element
   if (days + hours + minutes === 0) {
-    final = seconds;
+    output = seconds;
     smalltext.innerText = "seconds left!";
   }
   countdownElem.innerText = output;
@@ -45,7 +45,9 @@ function countdown() {
     countdownElem.innerText = "Happy New Year!";
     smalltext.innerText = "";
     bgElem.classList.toggle("bg-grad");
-    fireworkElem.map((elem) => elem.classList.toggle("firework"));
+    for (let i = 0; i < fireworkElem.length; i++) {
+      fireworkElem[i].classList.toggle("firework");
+    }
   }
 }
 
@@ -56,5 +58,5 @@ function redirectToBye() {
   hours <= -12 && (window.location.href = "/bye");
 }
 
-setInterval(countdown, 1000);
-setInterval(redirectToBye, 1000);
+setInterval(countdown(), 1000);
+setInterval(redirectToBye(), 1000);
