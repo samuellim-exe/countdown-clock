@@ -4,10 +4,22 @@ var countdownElem = document.getElementById("countdown");
 const smalltext = document.getElementsByClassName("d")[0];
 const fireworkElem = document.getElementsByClassName("f");
 const bgElem = document.getElementById("bg");
+var datePicker = document.getElementById("date-picker");
 //Next countddown: Jan 1, 2025 00:00:00
 var countdownDate = new Date(`Jan 1, ${nextYear} 00:00:00`).getTime();
 
 smalltext.innerText = `until ${nextYear}`;
+
+datePicker.addEventListener("change", function() {
+  let selectedDate = new Date(datePicker.value).getTime();
+  if (selectedDate < timeNow()) {
+    alert("Please select a future date.");
+    datePicker.value = "";
+    return;
+  }
+  countdownDate = selectedDate;
+  smalltext.innerText = `until ${datePicker.value}`;
+});
 
 function timeNow() {
   return new Date().getTime();
@@ -58,5 +70,9 @@ function redirectToBye() {
   hours <= -12 && (window.location.href = "/bye");
 }
 
-setInterval(countdown(), 1000);
-setInterval(redirectToBye(), 1000);
+setInterval(countdown, 1000);
+setInterval(redirectToBye, 1000);
+
+window.onload = function() {
+  datePicker.value = `${nextYear}-01-01`;
+};
